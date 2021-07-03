@@ -1,4 +1,7 @@
 ## 前言  
+首先分析[原始协程库作者地址](https://github.com/gistart/asyncio-pool)  
+写的很棒！！！  
+
 对协程库不怎么熟悉，分析下代码。  
 
 ## 分析  
