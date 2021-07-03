@@ -1,7 +1,9 @@
 import os
 import sys
 
-from new_kj.asyncio_pool import AioPool
+from asyncio_pool import AioPool
+
+
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.split(curr_dir)[0])
