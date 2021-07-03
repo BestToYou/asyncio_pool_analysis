@@ -33,13 +33,27 @@ cb是回调方法，ctx是上下文对象,然后调用_spawn，首先获得信�
 ##### 3.调用spawn  
 首先获取锁，锁限制了协程的数量，以至于同时执行的协程数不会超过这个值。  
 获得锁以后证明可以被执行了，那么从等待中移除掉这个future。  
-加一个判断，如果future 被设置值（也就是被releadse_join）后就会被释放不执行。  
+加一个判断，如果future 被设置值（也就是被release_joined）后就会被释放不执行。  
 如果没有future被设置值那么就会赋值一个wrapped（装饰器函数），这个装饰器函数执行的是把coro执行掉  
 然后给future对象设置值，并且给executed被执行量+1，然后从正在活跃的_active中进行删除  
 但是这里_active[future]  =task,其实也就是 future 执行完之后就把active的当前future对象删除了。  
 
 #### spawn_n
 原理和spawn相似，唯一的不同就是 future返回的快慢。这个返回的比较慢，但是执行的比较快，
+  
+#### exec
+调用spwn方法，等待池空后然后再执行。  
+  
+#### map_n  
+参数为可迭代的对象，然后把可迭代的对象,分别调用spawn,返回futures对象  
+  
+#### map  
+调用spawn 后获得所有调用fn返回的结果。  
+
+#### cancel
+如果没有提供要关闭的future,那么要把所有执行的全部停止结束掉。  
 
 
 
+### BaseAioPool  
+比较容易不再赘述。
