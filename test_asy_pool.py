@@ -52,7 +52,7 @@ async def spawn_usage(todo=range(1,4)):
         # Context manager calls `join` at exit, so this will finish when all
         # workers return, crash or cancelled.
 
-    assert sum(todo) == sum(fut.result() for fut in futures)  # all done
+    #assert sum(todo) == sum(fut.result() for fut in futures)  # all done
 
 
 async def map_usage(todo=range(100)):
