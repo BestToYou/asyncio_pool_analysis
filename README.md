@@ -42,7 +42,7 @@ cb是回调方法，ctx是上下文对象,然后调用_spawn，首先获得信�
 但是这里_active[future]  =task,其实也就是 future 执行完之后就把active的当前future对象删除了。  
 
 #### spawn_n
-原理和spawn相似，唯一的不同就是 future返回的快慢。这个返回的比较慢，但是执行的比较快，
+原理和spawn相似，唯一的不同就是 create_task放入事件循环中,with aiopool 等到退出的时候再集体执行。这个返回的比较慢，但是执行的比较快，
   
 #### exec
 调用spwn方法，等待池空后然后再执行。  
@@ -60,3 +60,4 @@ cb是回调方法，ctx是上下文对象,然后调用_spawn，首先获得信�
 
 ### BaseAioPool  
 比较容易不再赘述。
+
